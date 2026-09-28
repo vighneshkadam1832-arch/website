@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Shop Login</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background: 
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.3), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 100% 40%, rgba(6, 182, 212, 0.22), transparent 60%),
+        radial-gradient(ellipse 60% 40% at 0% 80%, rgba(139, 92, 246, 0.25), transparent 60%),
+        #0b0f19;
+    overflow:hidden;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+    filter: blur(40px);
+    border-radius:50%;
+    top:-80px;
+    left:-80px;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+    filter: blur(40px);
+    border-radius:50%;
+    bottom:-80px;
+    right:-80px;
+}
+
+.login-box{
+    position:relative;
+    width:420px;
+    padding:35px;
+    border-radius:24px;
+    background: rgba(17, 24, 39, 0.82);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 35px rgba(99, 102, 241, 0.25);
+    color:white;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo i{
+    font-size:55px;
+    color:#fff;
+}
+
+.logo h2{
+    margin-top:10px;
+    font-size:28px;
+}
+
+.logo p{
+    font-size:14px;
+    opacity:.8;
+}
+
+.input-box{
+    position:relative;
+    margin:15px 0;
+}
+
+.input-box i{
+    position:absolute;
+    top:15px;
+    left:15px;
+    color:#555;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px 14px 14px 45px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    background:white;
+    font-size:15px;
+}
+
+.input-box input:focus{
+    box-shadow:0 0 10px #00d4ff;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    margin-top:15px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.login-btn{
+    background:#00c853;
+    color:white;
+}
+
+.login-btn:hover{
+    background:#00a844;
+    transform:translateY(-2px);
+}
+
+.logout-btn{
+    background:#ff3d3d;
+    color:white;
+}
+
+.logout-btn:hover{
+    background:#d50000;
+    transform:translateY(-2px);
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    font-size:13px;
+    opacity:.8;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="login-box">
+
+<div class="logo">
+<i class="fas fa-mobile-alt"></i>
+<h2>Mobile Shop</h2>
+<p>Login to Continue Shopping</p>
+</div>
+
+<form id="loginForm">
+
+<div class="input-box">
+<i class="fas fa-user"></i>
+<input type="text" id="username" placeholder="Username" required>
+</div>
+
+<div class="input-box">
+<i class="fas fa-envelope"></i>
+<input type="email" id="email" placeholder="Email Address" required>
+</div>
+
+<div class="input-box">
+<i class="fas fa-location-dot"></i>
+<input type="text" id="address" placeholder="Address" required>
+</div>
+
+<div class="input-box">
+<i class="fas fa-lock"></i>
+<input type="password" id="password" placeholder="Password" required>
+</div>
+
+<div class="input-box">
+<i class="fas fa-lock"></i>
+<input type="password" id="repassword" placeholder="Confirm Password" required>
+</div>
+
+<button class="btn login-btn" type="submit">
+<i class="fas fa-sign-in-alt"></i> Login
+</button>
+
+<button class="btn logout-btn" type="button" onclick="logout()">
+<i class="fas fa-right-from-bracket"></i> Logout
+</button>
+
+</form>
+
+
+
+<div class="register-link">
+    <p>Don't have an account?
+      <a href="signin.html">Already have an account?</a>
+    </p>
+</div>
+
+<div class="footer">
+© 2026 Mobile Shop | Designed with ❤️
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let password=document.getElementById("password").value;
+let repassword=document.getElementById("repassword").value;
+
+if(password!==repassword){
+alert("Passwords do not match!");
+return;
+}
+
+localStorage.setItem("loggedIn","true");
+
+alert("Login Successful!");
+
+window.location.href="index.html";
+
+});
+
+function logout(){
+
+localStorage.removeItem("loggedIn");
+
+alert("Logged Out Successfully!");
+
+}
+
+</script>
+
+</body>
+</html>
